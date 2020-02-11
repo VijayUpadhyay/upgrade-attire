@@ -4,7 +4,7 @@ import './directory.styles.scss'
 
 class Directory extends React.Component {
     constructor(props) {
-        super();
+        super(props);
         this.state = {
             sections: [
                 {
