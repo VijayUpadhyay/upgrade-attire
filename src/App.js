@@ -5,7 +5,7 @@ import { Route } from 'react-router-dom';
 import ShopPage from "./page/shop/shop.component";
 import Header from "./component/header/header.component";
 import SignInAndSignUp from "./page/sign-in-and-sign-up/sign-in-and-sign-up.component";
-import { auth } from "./firebase/firebase.utils";
+import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 
 class App extends React.Component {
   constructor() {
@@ -18,11 +18,11 @@ class App extends React.Component {
   unSubscribeFromAuth = () => null;
 
   componentDidMount = () => {
-    this.unSubscribeFromAuth = auth.onAuthStateChanged(user => {
+    this.unSubscribeFromAuth = auth.onAuthStateChanged(async user => {
+      createUserProfileDocument(user);
+      console.log("user: " + user);
       console.log(user);
-      this.setState({ currentUser: user }, console.log("currentUser1: " + this.currentUser));
     });
-    console.log("currentUser2: " + this.currentUser)
   }
 
   UNSAFE_componentWillMount = () => {
