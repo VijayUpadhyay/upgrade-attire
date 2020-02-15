@@ -6,12 +6,7 @@ import { auth } from "../../firebase/firebase.utils";
 import { connect } from "react-redux"
 
 const Header = ({ currentUser }) => (
-
     <div className="header">
-        {
-            console.log("beforeAll: " + JSON.stringify(currentUser))
-        }
-
         <Link className="logo-container" to="/">
             <Logo className="logo" />
         </Link>
@@ -24,7 +19,6 @@ const Header = ({ currentUser }) => (
                     :
                     (<Link to="/signin" className="option"> SIGN IN </Link>)
             }
-
         </div>
     </div>
 );
